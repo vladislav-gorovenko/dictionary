@@ -1,5 +1,5 @@
 // importing types
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 // importing tools
 import { Outlet } from "react-router-dom";
@@ -7,13 +7,16 @@ import { Outlet } from "react-router-dom";
 // importing components
 import Header from "./Header";
 
+// context
+import { ThemeContext } from "../../contexts/ThemeContext";
+
 const Layout: FC = () => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <>
+    <div className={`layout theme-${theme}`}>
       <Header />
-      <h1>Hello, world</h1>
       <Outlet />
-    </>
+    </div>
   );
 };
 

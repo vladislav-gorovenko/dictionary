@@ -1,0 +1,245 @@
+@import "../../../styles/theme-variables.scss";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container--header {
+  flex: 1;
+  padding-top: 60px;
+}
+
+.moonIcon > path {
+  @include themify($themes) {
+    stroke: themed("colorMoon");
+  }
+}
+
+.sans {
+  font-family: "Inter", sans-serif;
+}
+
+.serif {
+  font-family: "Lora", serif;
+}
+
+.mono {
+  font-family: "Inconsolata", monospace;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  @include themify($themes) {
+    color: themed("colorMainText");
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo-container {
+    flex: 1;
+  }
+
+  &__logo {
+    height: 32px;
+  }
+
+  &__font-choices {
+    position: relative;
+  }
+
+  &__font-choices-hidden {
+    width: 183px;
+    height: 152px;
+    padding: 3rem;
+    position: absolute;
+    top: 200%;
+    right: 0;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include themify($themes) {
+      background: themed("colorHiddenBox");
+      box-shadow: 0px 5px 30px themed("colorHiddenBoxShadow");
+    }
+
+    visibility: hidden;
+    transform: rotateX(45deg);
+    opacity: 0;
+
+    transition: visibility 0.2s ease-in-out, transform 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
+
+    transform-origin: top;
+
+    &.visible {
+      visibility: visible;
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+
+  &__font {
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      @include themify($themes) {
+        color: themed("colorTextPurple");
+      }
+      transform: scale(0.98) rotate(1deg);
+    }
+  }
+
+  &__font-choice {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__font-choice-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+
+    img {
+      height: 6px;
+    }
+
+    &:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+  }
+
+  &__vertical-bar {
+    margin: 0 26px;
+    height: 32px;
+    width: 1px;
+    @include themify($themes) {
+      background: themed("colorHR");
+    }
+  }
+
+  &__light-switch-container {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__toggle-label {
+    display: flex;
+    align-items: center;
+
+    @include themify($themes) {
+      background: themed("colorToggleLabel");
+    }
+
+    height: 20px;
+    width: 40px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+      @include themify($themes) {
+        background: themed("colorTextPurple");
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      height: 14px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      @include themify($themes) {
+        background: themed("colorToggleBall");
+      }
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:has(.header__toggle-input:checked)::after {
+      transform: translateY(-50%) translateX(130%);
+    }
+  }
+
+  &__toggle-input {
+    display: none;
+  }
+
+  &__toggle-icon {
+    height: 20px;
+  }
+
+  &__form {
+    margin-top: 45px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 0 2rem;
+    height: 64px;
+    @include themify($themes) {
+      background: themed("colorInputBackground");
+    }
+    border-radius: 16px;
+    cursor: text;
+  }
+
+  &__form {
+    input {
+      padding: 0.5rem;
+      border: none;
+      background: inherit;
+      font-weight: 700;
+      font-size: 2rem;
+
+      @include themify($themes) {
+        color: themed("colorMainText");
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &:has(input:focus) {
+      @include themify($themes) {
+        border: 1px solid themed("colorTextPurple");
+      }
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &:hover {
+      @include themify($themes) {
+        border: 1px solid themed("colorTextPurple");
+      }
+    }
+
+    img {
+      height: 15.5px;
+      cursor: pointer;
+    }
+  }
+}

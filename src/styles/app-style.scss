@@ -1,0 +1,39 @@
+@import "../styles/theme-variables.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  /* font-family: "Lora", serif; */
+  /* font-family: "Inconsolata", monospace; */
+}
+
+.container {
+  margin: auto;
+  padding: 0 2rem;
+  max-width: 737px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.layout.theme-light {
+  background: #fff;
+}
+
+.layout.theme-dark {
+  background: #050505;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

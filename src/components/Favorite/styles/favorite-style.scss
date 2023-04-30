@@ -1,0 +1,162 @@
+@import "../../../styles/theme-variables.scss";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.playIcon {
+  cursor: pointer;
+
+  & > g {
+    & > circle {
+      transition: opacity 0.2s ease-in-out;
+    }
+    & > path {
+      transition: fill 0.2s ease-in-out;
+    }
+  }
+
+  &:hover > g {
+    & > circle {
+      opacity: 1;
+    }
+
+    & > path {
+      fill: white;
+    }
+  }
+}
+
+.main {
+  flex: 1;
+
+  @include themify($themes) {
+    color: themed("colorMainText");
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    &--left {
+      flex: 1;
+    }
+  }
+
+  &__word {
+    font-size: 64px;
+    font-weight: 700;
+  }
+
+  &__pronunciation {
+    font-size: 24px;
+    @include themify($themes) {
+      color: themed("colorTextPurple");
+    }
+  }
+
+  &__meaning {
+    position: relative;
+  }
+
+  &__hr {
+    content: "";
+    width: 100%;
+    height: 1px;
+    @include themify($themes) {
+      background: themed("colorHR");
+    }
+    margin: 40px 0;
+  }
+
+  &__part-of-speech {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-50%);
+    padding-right: 1rem;
+    @include themify($themes) {
+      background: themed("colorBackground");
+    }
+    font-size: 24px;
+  }
+
+  &__li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 1.5rem 0;
+
+    &::before {
+      content: "•";
+      font-size: 18px;
+      margin: 0 0.7em;
+      @include themify($themes) {
+        color: themed("colorBulletsPurple");
+      }
+    }
+  }
+
+  .main__synonym-link {
+    font-weight: 500;
+    font-size: 18px;
+    @include themify($themes) {
+      color: themed("colorTextPurple");
+    }
+    padding-left: 1rem;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  &__definition-example {
+    padding-left: 1.8em;
+    @include themify($themes) {
+      color: themed("colorSubText");
+    }
+  }
+
+  &__source-container {
+    &__hr {
+      margin-bottom: 20px;
+    }
+
+    margin-bottom: 5rem;
+  }
+
+  &__source-sub-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__source-span {
+    font-size: 14px;
+    margin-right: 1rem;
+  }
+
+  &__source-img {
+    margin-left: 0.5rem;
+  }
+
+  &__source-link {
+    text-decoration: underline;
+  }
+}
+
+.sub-text {
+  font-size: 20px;
+  font-weight: 400;
+  @include themify($themes) {
+    color: themed("colorSubText");
+  }
+}
+
+.text {
+  font-size: 18px;
+}
