@@ -3,10 +3,12 @@ import { FC } from "react";
 
 // importing hooks
 import { useContext, useState } from "react";
+import { redirect } from "react-router-dom";
 
 // importing context
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FontContext } from "../../contexts/FontsContext";
+import { WordContext } from "../../contexts/WordContext";
 
 // importing tools
 import { NavLink } from "react-router-dom";
@@ -23,7 +25,9 @@ import { MoonIcon } from "../Icons/Icons";
 const Header: FC = () => {
   const { theme, changeTheme } = useContext(ThemeContext);
   const { font, changeFont } = useContext(FontContext);
+  const { findWord } = useContext(WordContext);
   const [visible, setVisible] = useState(false);
+  const [input, setInput] = useState("");
 
   function changeVisible() {
     setVisible((prevVisible) => !prevVisible);
@@ -32,6 +36,11 @@ const Header: FC = () => {
   function modifyFont(newFont: string) {
     changeVisible();
     changeFont(newFont);
+  }
+
+  function submitInput() {
+    findWord(input);
+    setInput("");
   }
 
   function displayFont(): string {
@@ -103,10 +112,16 @@ const Header: FC = () => {
             <MoonIcon />
           </div>
         </nav>
-        <form className="header__form">
-          <input type="text" />
-          <img src={searchIcon} alt="search icon" />
-        </form>
+        <div className="header__form">
+          <input
+            onInput={(e) => {
+              setInput(e.target.value);
+            }}
+            type="text"
+            value={input}
+          />
+          <img onClick={submitInput} src={searchIcon} alt="search icon" />
+        </div>
       </div>
     </header>
   );

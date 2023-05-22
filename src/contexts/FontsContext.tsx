@@ -2,23 +2,23 @@ import { ReactNode } from "react";
 
 import { createContext, useState } from "react";
 
-interface ThemeContextType {
+interface FontContextType {
   font: string;
   changeFont: (value: string) => void;
 }
 
-interface ThemeContextProps {
+interface FontContextProps {
   children: ReactNode;
 }
 
-const defaultValue: ThemeContextType = {
+const defaultValue: FontContextType = {
   font: "",
   changeFont: () => {},
 };
 
 const Context = createContext(defaultValue);
 
-export function FontContextProvider({ children }: ThemeContextProps) {
+export function FontContextProvider({ children }: FontContextProps) {
   const getDefaultFont = () => {
     return localStorage.getItem("font") || "sans-serif";
   };
