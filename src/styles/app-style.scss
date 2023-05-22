@@ -6,12 +6,6 @@
   box-sizing: 0;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-  /* font-family: "Lora", serif; */
-  /* font-family: "Inconsolata", monospace; */
-}
-
 .container {
   margin: auto;
   padding: 0 2rem;
@@ -23,16 +17,31 @@ a {
   color: inherit;
 }
 
-.layout.theme-light {
-  background: #fff;
-}
-
-.layout.theme-dark {
-  background: #050505;
-}
-
-#root {
+.layout {
   min-height: 100vh;
+
+  &.theme-light {
+    background: #fff;
+  }
+
+  &.theme-dark {
+    background: #050505;
+  }
+
+  &.font-sans-serif {
+    font-family: "Inter", sans-serif;
+  }
+
+  &.font-serif {
+    font-family: "Lora", serif;
+  }
+
+  &.font-mono {
+    font-family: "Inconsolata", monospace;
+  }
+}
+
+.layout #root {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

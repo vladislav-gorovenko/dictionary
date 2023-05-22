@@ -1,5 +1,6 @@
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import { ThemeContextProvider } from "./contexts/ThemeContext";
+import { FontContextProvider } from "./contexts/FontsContext";
 
 import "./styles/app-style.scss";
 
@@ -11,14 +12,20 @@ function App() {
   return (
     <>
       <ThemeContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Navigate to="/words/word" />} />
-              <Route path="/words/:word" element={<Favorite />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <FontContextProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Navigate to="/words/keyboard" />} />
+                <Route
+                  path="/words"
+                  element={<Navigate to="/words/keyboard" />}
+                />
+                <Route path="/words/:word" element={<Favorite />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </FontContextProvider>
       </ThemeContextProvider>
     </>
   );

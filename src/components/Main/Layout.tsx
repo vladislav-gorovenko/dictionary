@@ -9,11 +9,13 @@ import Header from "./Header";
 
 // context
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { FontContext } from "../../contexts/FontsContext";
 
 const Layout: FC = () => {
   const { theme } = useContext(ThemeContext);
+  const { font } = useContext(FontContext);
   return (
-    <div className={`layout theme-${theme}`}>
+    <div className={`layout theme-${theme} font-${font}`}>
       <Header />
       <Outlet />
     </div>

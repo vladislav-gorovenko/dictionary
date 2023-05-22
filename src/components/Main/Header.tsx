@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 
 // importing context
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { FontContext } from "../../contexts/FontsContext";
 
 // importing tools
 import { NavLink } from "react-router-dom";
@@ -21,10 +22,29 @@ import { MoonIcon } from "../Icons/Icons";
 
 const Header: FC = () => {
   const { theme, changeTheme } = useContext(ThemeContext);
+  const { font, changeFont } = useContext(FontContext);
   const [visible, setVisible] = useState(false);
 
   function changeVisible() {
     setVisible((prevVisible) => !prevVisible);
+  }
+
+  function modifyFont(newFont: string) {
+    changeVisible();
+    changeFont(newFont);
+  }
+
+  function displayFont(): string {
+    switch (font) {
+      case "sans-serif":
+        return "Sans Serif";
+        break;
+      case "serif":
+        return "Serif";
+        break;
+      default:
+        return "Mono";
+    }
   }
 
   return (
@@ -41,7 +61,7 @@ const Header: FC = () => {
               onClick={changeVisible}
               className="header__font-choice-container"
             >
-              <p className="header__font-choice">Sans Serif</p>
+              <p className="header__font-choice">{displayFont()}</p>
               <img src={arrowDownIcon} />
             </div>
             <div
@@ -49,9 +69,24 @@ const Header: FC = () => {
                 visible ? "visible" : "hidden"
               }`}
             >
-              <p className="header__font sans">Sans Serif</p>
-              <p className="header__font serif">Serif</p>
-              <p className="header__font mono">Mono</p>
+              <p
+                onClick={() => modifyFont("sans-serif")}
+                className="header__font sans"
+              >
+                Sans Serif
+              </p>
+              <p
+                onClick={() => modifyFont("serif")}
+                className="header__font serif"
+              >
+                Serif
+              </p>
+              <p
+                onClick={() => modifyFont("mono")}
+                className="header__font mono"
+              >
+                Mono
+              </p>
             </div>
           </div>
           <span className="header__vertical-bar"></span>
