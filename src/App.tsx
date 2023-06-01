@@ -11,12 +11,14 @@ import "./styles/app-style.scss";
 
 // importing components
 import Layout from "./components/Main/Layout";
-import Favorite from "./components/Favorite/Favorite";
+import Favorite, {
+  loader as favoriteLoader,
+} from "./components/Favorite/Favorite";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path=":word" element={<Favorite />} />
+      <Route path=":word" loader={favoriteLoader} element={<Favorite />} />
     </Route>
   )
 );
