@@ -1,6 +1,3 @@
-// importing types
-import { FC } from "react";
-
 // importing hooks
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";

@@ -1,15 +1,13 @@
-// importing types
-import { FC } from "react";
-
 // importing hooks
 import { useContext, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 // importing context
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FontContext } from "../../contexts/FontsContext";
 
 // importing tools
-import { NavLink } from "react-router-dom";
+import { Form, NavLink } from "react-router-dom";
 
 // importing assets
 import "./styles/header-style.scss";
@@ -20,11 +18,12 @@ import arrowDownIcon from "../../assets/icon-arrow-down.svg";
 // importing icons
 import { MoonIcon } from "../Icons/Icons";
 
-const Header: FC = () => {
+const Header = () => {
   const { theme, changeTheme } = useContext(ThemeContext);
   const { font, changeFont } = useContext(FontContext);
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLInputElement>(null);
+  const location = useLocation();
 
   function changeVisible() {
     setVisible((prevVisible) => !prevVisible);
@@ -36,8 +35,12 @@ const Header: FC = () => {
   }
 
   function submitInput() {
-    if (ref.current) {
-      console.log(ref.current.value);
+    const current = ref.current;
+    if (current) {
+      if (current.value.trim()) {
+        console.log(current.value.trim());
+        ref.current.value = "";
+      }
     }
   }
 
@@ -110,10 +113,17 @@ const Header: FC = () => {
             <MoonIcon />
           </div>
         </nav>
-        <div className="header__form">
+        <Form
+          method="post"
+          onSubmit={submitInput}
+          className="header__form"
+          action={location.pathname}
+        >
           <input ref={ref} type="text" />
-          <img onClick={submitInput} src={searchIcon} alt="search icon" />
-        </div>
+          <button className="header__form--btn">
+            <img src={searchIcon} alt="search icon" />
+          </button>
+        </Form>
       </div>
     </header>
   );

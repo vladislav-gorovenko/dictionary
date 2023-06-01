@@ -1,6 +1,4 @@
-import { FC } from "react";
-
-const MoonIcon: FC = () => {
+const MoonIcon = () => {
   return (
     <svg
       className="moonIcon"
@@ -21,7 +19,7 @@ const MoonIcon: FC = () => {
   );
 };
 
-const PlayIcon: FC = () => {
+const PlayIcon = () => {
   return (
     <svg
       className="playIcon"
