@@ -9,11 +9,17 @@ import "./styles/favorite-style.scss";
 import { PlayIcon } from "../Icons/Icons";
 import axios from "axios";
 
+// import tools
+import { findSoundUrl } from "../utils/utils";
+
 // importing types
 import { Word } from "../../contexts/interfaces";
 
 const Favorite = () => {
   const word = useLoaderData() as Word;
+  const sound = findSoundUrl(word);
+  const soundAudio = sound ? new Audio(sound) : null;
+
   return (
     <main className="main">
       <div className="container container--main">
@@ -22,7 +28,17 @@ const Favorite = () => {
             <h1 className="main__word">{word.word}</h1>
             <p className="main__pronunciation">{word.phonetic}</p>
           </div>
-          <PlayIcon />
+
+          <PlayIcon
+            onClick={() => {
+              if (soundAudio) {
+                if (!soundAudio.paused) {
+                  return;
+                }
+                soundAudio.play();
+              }
+            }}
+          />
         </div>
         <div className="main__meanings">
           {word.meanings.map((meaning, index) => {

@@ -19,9 +19,14 @@ const MoonIcon = () => {
   );
 };
 
-const PlayIcon = () => {
+interface PlayProps {
+  onClick: () => void;
+}
+
+const PlayIcon = ({ onClick }: PlayProps) => {
   return (
     <svg
+      onClick={onClick}
       className="playIcon"
       xmlns="http://www.w3.org/2000/svg"
       width="75"

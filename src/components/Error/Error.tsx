@@ -4,7 +4,15 @@ import "./errorStyle.scss";
 
 const Error = () => {
   const error = useRouteError() as Error;
-  const { title, text } = JSON.parse(error.message);
+  let title, text;
+  try {
+    const data = JSON.parse(error.message);
+    title = data.title;
+    text = data.text;
+  } catch {
+    title = "Some error";
+    text = "";
+  }
   return (
     <main className="main main--error">
       <div className="container container--main container--main--error">

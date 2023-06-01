@@ -39,7 +39,7 @@ const Header = () => {
     e.preventDefault();
     if (cur) {
       if (cur.value.trim()) {
-        navigate(cur.value || "");
+        navigate(cur.value.trim().toLowerCase() || "");
         cur.value = "";
       }
     }
