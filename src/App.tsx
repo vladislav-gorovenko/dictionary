@@ -14,11 +14,19 @@ import Layout from "./components/Main/Layout";
 import Favorite, {
   loader as favoriteLoader,
 } from "./components/Favorite/Favorite";
+import Error from "./components/Error/Error";
+import Main from "./components/Main/Main";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path=":word" loader={favoriteLoader} element={<Favorite />} />
+      <Route index element={<Main />} />
+      <Route
+        errorElement={<Error />}
+        path=":word"
+        loader={favoriteLoader}
+        element={<Favorite />}
+      />
     </Route>
   )
 );

@@ -90,18 +90,20 @@ const Favorite = () => {
 
 export default Favorite;
 
-interface LoaderParams {
-  params: {
-    word: string;
-  };
-}
-
-export async function loader({ params }: LoaderParams) {
+export async function loader({ params }: { params: any }) {
   const { word } = params;
-  const { data } = await axios.get<Word[]>(
-    `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-  );
-  return data[0];
+  try {
+    const { data } = await axios.get<Word[]>(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+    );
+    return data[0];
+  } catch (_) {
+    const errorObject = {
+      title: "No Definitions Found",
+      text: "Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead.",
+    };
+    throw Error(JSON.stringify(errorObject));
+  }
 }
 
 // hello
