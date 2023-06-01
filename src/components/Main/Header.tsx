@@ -120,7 +120,7 @@ const Header = () => {
           method="post"
           className="header__form"
         >
-          <input ref={ref} type="text" />
+          <input placeholder="Search for any word..." ref={ref} type="text" />
           <button className="header__form--btn">
             <img src={searchIcon} alt="search icon" />
           </button>

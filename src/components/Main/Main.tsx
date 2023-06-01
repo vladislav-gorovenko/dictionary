@@ -5,8 +5,8 @@ const Main = () => {
     <main className="main main--error">
       <div className="container container--main container--main--error">
         <div className="main__top main__top--error">
-          <FcSearch size="40px" />
-          <h1 className="sub-text sub-text--error">Let's start searching</h1>
+          <FcSearch size="50px" />
+          <h1 className="sub-text sub-text--error">Let's start searching...</h1>
         </div>
       </div>
     </main>

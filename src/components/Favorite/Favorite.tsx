@@ -59,7 +59,7 @@ const Favorite = () => {
                             <NavLink
                               className="main__synonym-link"
                               key={i}
-                              to="/"
+                              to={`/${synonym}`}
                             >
                               {synonym}
                             </NavLink>
@@ -77,7 +77,11 @@ const Favorite = () => {
           <div className="main__hr"></div>
           <div className="main__source-sub-container">
             <span className="main__source-span">Source: </span>
-            <NavLink className="main__source-link" to="/">
+            <NavLink
+              className="main__source-link"
+              target="_blank"
+              to={word.sourceUrls[0]}
+            >
               {word.sourceUrls[0]}
             </NavLink>
             <img className="main__source-img" src={newWindowIcon} />
