@@ -14,6 +14,7 @@ import { FontContext } from "../../contexts/FontsContext";
 const Layout: FC = () => {
   const { theme } = useContext(ThemeContext);
   const { font } = useContext(FontContext);
+
   return (
     <div className={`layout theme-${theme} font-${font}`}>
       <Header />

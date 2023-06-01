@@ -3,11 +3,9 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
-  Navigate,
 } from "react-router-dom";
 import { ThemeContextProvider } from "./contexts/ThemeContext";
 import { FontContextProvider } from "./contexts/FontsContext";
-import { WordContextProvider } from "./contexts/WordContext";
 
 import "./styles/app-style.scss";
 
@@ -18,8 +16,7 @@ import Favorite from "./components/Favorite/Favorite";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route index element={<Navigate to="/words/keyboard" />} />
-      <Route path="/words/:word" element={<Favorite />} />
+      <Route path=":word" element={<Favorite />} />
     </Route>
   )
 );
@@ -29,9 +26,7 @@ function App() {
     <>
       <ThemeContextProvider>
         <FontContextProvider>
-          <WordContextProvider>
-            <RouterProvider router={router} />
-          </WordContextProvider>
+          <RouterProvider router={router} />
         </FontContextProvider>
       </ThemeContextProvider>
     </>
