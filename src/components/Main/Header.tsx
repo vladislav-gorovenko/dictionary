@@ -3,7 +3,6 @@ import { FC } from "react";
 
 // importing hooks
 import { useContext, useState } from "react";
-import { redirect } from "react-router-dom";
 
 // importing context
 import { ThemeContext } from "../../contexts/ThemeContext";
