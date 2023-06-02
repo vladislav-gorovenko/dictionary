@@ -104,6 +104,11 @@
     margin-top: 1rem;
   }
 
+  &__synonyms-section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &__synonym-link {
     font-weight: 500;
     font-size: 18px;

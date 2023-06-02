@@ -67,21 +67,21 @@ const Favorite = () => {
                 </ul>
                 <div className="main__synonyms">
                   {meaning.synonyms.length > 0 && (
-                    <div>
+                    <div className="main__synonyms-section">
                       <h4 className="main__synonyms-title sub-text">
                         Synonyms
-                        {meaning.synonyms.map((synonym, i) => {
-                          return (
-                            <NavLink
-                              className="main__synonym-link"
-                              key={i}
-                              to={`/${synonym}`}
-                            >
-                              {synonym}
-                            </NavLink>
-                          );
-                        })}
                       </h4>
+                      {meaning.synonyms.map((synonym, i) => {
+                        return (
+                          <NavLink
+                            className="main__synonym-link"
+                            key={i}
+                            to={`/${synonym}`}
+                          >
+                            {synonym}
+                          </NavLink>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
