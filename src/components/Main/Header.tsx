@@ -120,8 +120,6 @@ const Header = () => {
         <form
           onSubmit={submitInput}
           onChange={() => setInputError(false)}
-          action="/"
-          method="post"
           className="header__form"
           style={{ border: inputError ? "1px solid red" : "" }}
         >

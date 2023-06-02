@@ -10,9 +10,11 @@ const Error = () => {
     title = data.title;
     text = data.text;
   } catch {
-    title = "Some error";
-    text = "";
+    title = "No Definitions Found";
+    text =
+      "Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead.";
   }
+
   return (
     <main className="main main--error">
       <div className="container container--main container--main--error">
