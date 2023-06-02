@@ -205,6 +205,12 @@
     }
     border-radius: 16px;
     cursor: text;
+
+    &--btn {
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
   }
 
   &__form {
@@ -213,7 +219,7 @@
       border: none;
       background: inherit;
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 1.7rem;
 
       @include themify($themes) {
         color: themed("colorMainText");

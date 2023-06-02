@@ -1,14 +1,10 @@
-// importing types
-import { FC } from "react";
-
 // importing hooks
-import { useContext, useState } from "react";
-import { redirect } from "react-router-dom";
+import { useContext, useState, useRef, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 // importing context
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FontContext } from "../../contexts/FontsContext";
-import { WordContext } from "../../contexts/WordContext";
 
 // importing tools
 import { NavLink } from "react-router-dom";
@@ -22,12 +18,12 @@ import arrowDownIcon from "../../assets/icon-arrow-down.svg";
 // importing icons
 import { MoonIcon } from "../Icons/Icons";
 
-const Header: FC = () => {
+const Header = () => {
   const { theme, changeTheme } = useContext(ThemeContext);
   const { font, changeFont } = useContext(FontContext);
-  const { findWord } = useContext(WordContext);
   const [visible, setVisible] = useState(false);
-  const [input, setInput] = useState("");
+  const ref = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   function changeVisible() {
     setVisible((prevVisible) => !prevVisible);
@@ -38,9 +34,15 @@ const Header: FC = () => {
     changeFont(newFont);
   }
 
-  function submitInput() {
-    findWord(input);
-    setInput("");
+  function submitInput(e: FormEvent<HTMLFormElement>) {
+    const cur = ref.current;
+    e.preventDefault();
+    if (cur) {
+      if (cur.value.trim()) {
+        navigate(cur.value.trim().toLowerCase() || "");
+        cur.value = "";
+      }
+    }
   }
 
   function displayFont(): string {
@@ -112,16 +114,17 @@ const Header: FC = () => {
             <MoonIcon />
           </div>
         </nav>
-        <div className="header__form">
-          <input
-            onInput={(e) => {
-              setInput(e.target.value);
-            }}
-            type="text"
-            value={input}
-          />
-          <img onClick={submitInput} src={searchIcon} alt="search icon" />
-        </div>
+        <form
+          onSubmit={submitInput}
+          action="/"
+          method="post"
+          className="header__form"
+        >
+          <input placeholder="Search for any word..." ref={ref} type="text" />
+          <button className="header__form--btn">
+            <img src={searchIcon} alt="search icon" />
+          </button>
+        </form>
       </div>
     </header>
   );

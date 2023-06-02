@@ -24,7 +24,6 @@ export function FontContextProvider({ children }: FontContextProps) {
   };
 
   const [font, setFont] = useState(() => getDefaultFont());
-  console.log(font);
 
   const changeFont = (specified_font: string) => {
     setFont((_) => {
