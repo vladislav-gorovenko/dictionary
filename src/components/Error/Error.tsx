@@ -18,8 +18,8 @@ const Error = () => {
       <div className="container container--main container--main--error">
         <div className="main__top main__top--error">
           <TbMoodSad2 size="60px" />
-          <h1 className="sub-text sub-text--error">{title}</h1>
-          <h1 className="main-text main-text--error">{text}</h1>
+          <h1 className="main-text main-text--error">{title}</h1>
+          <h1 className="sub-text sub-text--error">{text}</h1>
         </div>
       </div>
     </main>

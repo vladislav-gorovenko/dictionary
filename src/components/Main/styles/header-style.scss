@@ -192,7 +192,16 @@
     height: 20px;
   }
 
+  &__form--error {
+    position: absolute;
+    bottom: -30%;
+    color: #ff5252;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+  }
+
   &__form {
+    position: relative;
     margin-top: 45px;
     display: grid;
     gap: 1rem;
@@ -200,6 +209,7 @@
     align-items: center;
     padding: 0 2rem;
     height: 64px;
+    border: 1px solid transparent;
     @include themify($themes) {
       background: themed("colorInputBackground");
     }

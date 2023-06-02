@@ -22,6 +22,7 @@ const Header = () => {
   const { theme, changeTheme } = useContext(ThemeContext);
   const { font, changeFont } = useContext(FontContext);
   const [visible, setVisible] = useState(false);
+  const [inputError, setInputError] = useState(false);
   const ref = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
@@ -41,6 +42,8 @@ const Header = () => {
       if (cur.value.trim()) {
         navigate(cur.value.trim().toLowerCase() || "");
         cur.value = "";
+      } else {
+        setInputError(true);
       }
     }
   }
@@ -116,14 +119,19 @@ const Header = () => {
         </nav>
         <form
           onSubmit={submitInput}
+          onChange={() => setInputError(false)}
           action="/"
           method="post"
           className="header__form"
+          style={{ border: inputError ? "1px solid red" : "" }}
         >
           <input placeholder="Search for any word..." ref={ref} type="text" />
           <button className="header__form--btn">
             <img src={searchIcon} alt="search icon" />
           </button>
+          {inputError && (
+            <p className="header__form--error">Whoops, can’t be empty…</p>
+          )}
         </form>
       </div>
     </header>
