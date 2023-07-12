@@ -27,19 +27,19 @@ This project was built using the following technologies:
 - React Router DOM (Version 6.11 with Data API)
 - axios
 
-## Demo
+## Live
 
-You can check out the live version of the project [here](https://dictionary-ashen.vercel.app).
+You can check out the live version of the project here -> [https://countries-martinideniam.vercel.app](https://countries-martinideniam.vercel.app).
 
 ## Contact Me
 
 For any inquiries or feedback, feel free to get in touch with me through:
 
-- [GitHub](https://github.com/martinideniam/dictionary)
-- [Twitter](https://twitter.com/vlad_webdev)
+- [GitHub](https://github.com/vladislav-gorovenko)
 - [LinkedIn](https://www.linkedin.com/in/vladislavgorovenko/)
-- [Frontend Mentor](https://www.frontendmentor.io/profile/martinideniam)
+- [FrontendMentor](https://www.frontendmentor.io/profile/martinideniam/)
+- [Telegram](https://t.me/vlad_webdev_iam)
 
 ## Feedback
 
-If you have any feedback or suggestions, please open an issue here on [GitHub](https://github.com/martinideniam/dictionary/issues).
+If you have any feedback or suggestions, please open an issue here on [GitHub](https://github.com/vladislav-gorovenko/dictionary/issues).
