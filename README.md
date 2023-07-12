@@ -29,7 +29,14 @@ This project was built using the following technologies:
 
 ## Live
 
-You can check out the live version of the project here -> [https://countries-martinideniam.vercel.app](https://countries-martinideniam.vercel.app).
+You can check out the live version of the project here -> [https://dictionary-ashen.vercel.app](https://dictionary-ashen.vercel.app).
+
+## Screenshots
+
+![screenshot-1](./screenshots/screnshot-1.png)
+![screenshot-2](./screenshots/screnshot-2.png)
+![screenshot-3](./screenshots/screnshot-3.png)
+![screenshot-4](./screenshots/screnshot-4.png)
 
 ## Contact Me
 
